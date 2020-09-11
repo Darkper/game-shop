@@ -4,11 +4,14 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author Johny Soto
@@ -21,11 +24,23 @@ import javax.persistence.Table;
 @Table(name = "clients")
 public class Client {
     @Id
-    @Column(name = "document", nullable = false, insertable = true)
+    @NotNull
+    @Length(min = 1, max = 20)
+    @Column(name = "document", nullable = false)
     private String document;
+
+    @NotNull
+    @Length(min = 1, max = 50)
     private String name;
+
+    @NotNull
+    @Length(min = 1, max = 50)
     private String lastName;
+
+    @Length(max = 15)
     private String phone;
+
+    @Email
     private String email;
 
     public Client(String document) {
