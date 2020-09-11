@@ -1,7 +1,5 @@
 package com.jaxso.gameshop.core.director;
 
-import com.jaxso.gameshop.core.technology.Technology;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -9,11 +7,11 @@ import java.util.Optional;
  * @author Johny Soto
  */
 public interface DirectorRepository {
-    void save(Technology technology);
+    void save(Director director);
 
-    Optional<Technology> findById(String id);
+    Optional<Director> findById(String id);
 
-    List<Technology> findAll();
+    List<Director> findAll();
 
-    void remove(Technology technology);
+    void remove(Director director);
 }

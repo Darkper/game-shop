@@ -1,9 +1,12 @@
-package com.jaxso.gameshop.core.game;
+package com.jaxso.gameshop.core.rent;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 /**
  * @author Johny Soto
@@ -12,7 +15,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class GameProtagonist {
+@Embeddable
+public class RentGameKey implements Serializable {
+    private String rentId;
     private String gameId;
-    private String protagonistId;
 }

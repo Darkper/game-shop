@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface RentRepository {
     void save(Rent rent);
 
-    Optional<Rent> findById(int id);
+    Optional<Rent> findById(String id);
 
     List<Rent> findAll();
 

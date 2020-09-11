@@ -3,14 +3,17 @@ package com.jaxso.gameshop.core.game;
 import com.jaxso.gameshop.core.director.Director;
 import com.jaxso.gameshop.core.producer.Producer;
 import com.jaxso.gameshop.core.protagonist.Protagonist;
+import com.jaxso.gameshop.core.rent.RentGame;
 import com.jaxso.gameshop.core.technology.Technology;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -20,24 +23,34 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
+@Entity
+@Table(name = "games")
 public class Game {
-    private String id;
+    @Id
+    private final String id = UUID.randomUUID().toString();
     private String name;
     private BigDecimal price;
     private Date releaseDate;
-    private Director director;
-    private Producer producer;
-    private Technology technology;
-    private List<Protagonist> protagonists;
 
-    public Game(String name, BigDecimal price, Date releaseDate, Director director, Producer producer, Technology technology, List<Protagonist> protagonists) {
-        this.id = UUID.randomUUID().toString();
-        this.name = name;
-        this.price = price;
-        this.releaseDate = releaseDate;
-        this.director = director;
-        this.producer = producer;
-        this.technology = technology;
-        this.protagonists = protagonists;
-    }
+    @JoinColumn(name = "director_id", nullable = false)
+    @ManyToOne(optional = false, cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    private Director director;
+
+    @JoinColumn(name = "producer_id", nullable = false)
+    @ManyToOne(optional = false, cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    private Producer producer;
+
+    @JoinColumn(name = "technology_id", nullable = false)
+    @ManyToOne(optional = false, cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    private Technology technology;
+
+    @ManyToMany()
+    @JoinTable(name = "game_protagonists",
+            joinColumns = @JoinColumn(name = "game_id"),
+            inverseJoinColumns = @JoinColumn(name = "protagonist_id"))
+    private Set<Protagonist> protagonists = new HashSet<>();
+
+    @OneToMany(mappedBy = "game")
+    Set<RentGame> rentGames;
+
 }

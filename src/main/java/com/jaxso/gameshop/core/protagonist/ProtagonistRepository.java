@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface ProtagonistRepository {
     void save(Protagonist protagonist);
 
-    Optional<Protagonist> findById(int id);
+    Optional<Protagonist> findById(String id);
 
     List<Protagonist> findAll();
 

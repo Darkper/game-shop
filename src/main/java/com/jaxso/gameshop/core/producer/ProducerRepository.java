@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface ProducerRepository {
     void save(Producer producer);
 
-    Optional<Producer> findById(int id);
+    Optional<Producer> findById(String id);
 
     List<Producer> findAll();
 

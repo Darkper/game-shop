@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface GameReository {
     void save(Game game);
 
-    Optional<Game> findById(int id);
+    Optional<Game> findById(String id);
 
     List<Game> findAll();
 
