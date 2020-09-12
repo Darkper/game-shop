@@ -62,6 +62,6 @@ public class ProtagonistApi {
 
     @PutMapping
     public ResponseEntity<?> update(@RequestBody @Valid Protagonist protagonist) {
-        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(null);
+        return save(protagonist);
     }
 }

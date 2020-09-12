@@ -5,6 +5,7 @@ import com.jaxso.gameshop.core.rent.RentRepository;
 import com.jaxso.gameshop.infrastructure.jpa.JpaRentRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,5 +38,10 @@ public class RentRepositoryImpl implements RentRepository {
     @Override
     public void remove(Rent rent) {
         jpaRentRepository.delete(rent);
+    }
+
+    @Override
+    public List<Rent> getAllByDate(Date date) {
+        return jpaRentRepository.getAllByDate(date);
     }
 }

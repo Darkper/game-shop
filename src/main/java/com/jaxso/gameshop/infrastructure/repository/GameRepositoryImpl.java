@@ -38,4 +38,9 @@ public class GameRepositoryImpl implements GameReository {
     public void remove(Game game) {
         jpaGameRepository.delete(game);
     }
+
+    @Override
+    public String getMoreRentedGameId() {
+        return jpaGameRepository.getMoreRentedGameId();
+    }
 }

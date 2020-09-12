@@ -39,4 +39,9 @@ public class ClientRepositoryImpl implements ClientRepository {
     public void remove(Client client) {
         jpaClientRepository.delete(client);
     }
+
+    @Override
+    public String getMoreFrequentClientId() {
+        return jpaClientRepository.getMoreFrequentClientId();
+    }
 }

@@ -41,6 +41,16 @@ public class GameApi {
         return ResponseEntity.ok(optionalGame.get().toData());
     }
 
+    @GetMapping(path = "more-rented")
+    public ResponseEntity<?> getMoreFrequentClient() {
+        String document = gameRepository.getMoreRentedGameId();
+        if (document == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Client not found");
+        }
+        Optional<Game> optionalGame = gameRepository.findById(document);
+        return ResponseEntity.ok(optionalGame.get().toData());
+    }
+
     @PostMapping
     public ResponseEntity<?> save(@RequestBody @Valid GameData gameData) {
         gameRepository.save(gameData.toGame());

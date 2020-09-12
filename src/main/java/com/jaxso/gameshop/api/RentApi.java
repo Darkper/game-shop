@@ -9,6 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -42,6 +46,17 @@ public class RentApi {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Rent not found");
         }
         return ResponseEntity.ok(optionalRent.get().toData());
+    }
+
+    @GetMapping("date/{date}")
+    public ResponseEntity<?> getAllByDate(@PathVariable String date) {
+        try {
+            Date formatDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+            List<RentData> rents = rentRepository.getAllByDate(formatDate).stream().map(Rent::toData).collect(Collectors.toList());
+            return ResponseEntity.ok(rents);
+        } catch (ParseException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
     }
 
 

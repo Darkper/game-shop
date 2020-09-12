@@ -30,6 +30,16 @@ public class ClientApi {
         return ResponseEntity.ok(clientRepository.findAll());
     }
 
+    @GetMapping(path = "more-frequent")
+    public ResponseEntity<?> getMoreFrequentClient() {
+        String document = clientRepository.getMoreFrequentClientId();
+        if (document == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Client not found");
+        }
+        Optional<Client> optionalClient = clientRepository.findById(document);
+        return ResponseEntity.ok(optionalClient.get());
+    }
+
     @GetMapping("{document}")
     public ResponseEntity<?> findById(@PathVariable String document) {
         Optional<Client> optionalClient = clientRepository.findById(document);

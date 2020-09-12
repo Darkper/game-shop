@@ -14,4 +14,6 @@ public interface ClientRepository {
     List<Client> findAll();
 
     void remove(Client client);
+
+    String getMoreFrequentClientId();
 }

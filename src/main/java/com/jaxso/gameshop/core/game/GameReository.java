@@ -14,4 +14,6 @@ public interface GameReository {
     List<Game> findAll();
 
     void remove(Game game);
+
+    String getMoreRentedGameId();
 }

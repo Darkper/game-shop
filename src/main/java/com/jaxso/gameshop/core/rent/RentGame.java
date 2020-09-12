@@ -30,7 +30,7 @@ public class RentGame implements Serializable {
     @JoinColumn(name = "rent_id")
     Rent rent;
 
-    @JsonIgnore
+//    @JsonIgnore
     @ManyToOne
     @MapsId("gameId")
     @JoinColumn(name = "game_id")
