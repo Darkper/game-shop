@@ -3,6 +3,7 @@ package com.jaxso.gameshop.infrastructure.repository;
 import com.jaxso.gameshop.core.rent.Rent;
 import com.jaxso.gameshop.core.rent.RentRepository;
 import com.jaxso.gameshop.infrastructure.jpa.JpaRentRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,6 +11,7 @@ import java.util.Optional;
 /**
  * @author Johny Soto
  */
+@Repository
 public class RentRepositoryImpl implements RentRepository {
     private final JpaRentRepository jpaRentRepository;
 

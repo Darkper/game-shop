@@ -3,6 +3,7 @@ package com.jaxso.gameshop.infrastructure.repository;
 import com.jaxso.gameshop.core.producer.Producer;
 import com.jaxso.gameshop.core.producer.ProducerRepository;
 import com.jaxso.gameshop.infrastructure.jpa.JpaProducerRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,6 +11,7 @@ import java.util.Optional;
 /**
  * @author Johny Soto
  */
+@Repository
 public class ProducerRepositoryImpl implements ProducerRepository {
     private final JpaProducerRepository jpaProducerRepository;
 

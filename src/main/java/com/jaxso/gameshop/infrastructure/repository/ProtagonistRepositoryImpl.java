@@ -3,6 +3,7 @@ package com.jaxso.gameshop.infrastructure.repository;
 import com.jaxso.gameshop.core.protagonist.Protagonist;
 import com.jaxso.gameshop.core.protagonist.ProtagonistRepository;
 import com.jaxso.gameshop.infrastructure.jpa.JpaProtagonistRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,6 +11,7 @@ import java.util.Optional;
 /**
  * @author Johny Soto
  */
+@Repository
 public class ProtagonistRepositoryImpl implements ProtagonistRepository {
     private final JpaProtagonistRepository jpaProtagonistRepository;
 
