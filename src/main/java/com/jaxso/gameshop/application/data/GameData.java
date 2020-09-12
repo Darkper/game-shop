@@ -62,8 +62,8 @@ public class GameData {
         game.setPrice(price);
         game.setReleaseDate(releaseDate);
         game.setDirector(new Director(directorId));
-        game.setProducer(new Producer(directorId));
-        game.setTechnology(new Technology(directorId));
+        game.setProducer(new Producer(producerId));
+        game.setTechnology(new Technology(technologyId));
         game.setProtagonists(protagonists);
         return game;
     }
